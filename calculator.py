@@ -5,9 +5,9 @@ vecy = ["N", "S"]
 
 d1 = float(input("First vector?"))
 sorc1 = str(input("Simple Vector or Complex Vector\n S or C?\n"))
-if (sorc == "S" or "s"):
+if (sorc1 == "S" or "s"):
   dir1 = str(input("Direction?"))
-elseif (sorc == "C" or "c"):
+elif (sorc1 == "C" or "c"):
   dirca1 = str(input("Direction?"))
   dircb1 = float(input("Angle?"))
   dircc1 = str(input("Angle Direction?"))
@@ -22,9 +22,9 @@ else:
 
 d2 = float(input("Second vector?"))
 sorc2 = str(input("Simple Vector or Complex Vector\n S or C?\n"))
-if (sorc == "S" or "s"):
+if (sorc2 == "S" or "s"):
   dir2 = str(input("Direction?"))
-elseif (sorc == "C" or "c"):
+elif (sorc2 == "C" or "c"):
   dirca2 = str(input("Direction?"))
   dircb2 = float(input("Angle?"))
   dircc2 = str(input("Angle Direction?"))
@@ -39,7 +39,7 @@ else:
 
 
 #find d_result only if the movements are perpendicular
-d_result = math.sqrt(d1 * d1 + d2*d2)
+d_result = math.sqrt(d1*d1 + d2*d2)
 
 dir_result = math.degrees(math.atan(float(d1/d2)))
 
