@@ -75,8 +75,6 @@ vector_1.append(vector_1[0] * math.cos(vector_1[2])*vecyval1)
 vector_2.append(vector_2[0] * math.sin(vector_2[2])*vecxval2)
 vector_2.append(vector_2[0] * math.cos(vector_2[2])*vecyval2)
 
-print(vecxval1)
-exit()
 #find d_result only if the movements are perpendicular
 
 while run == True:
