@@ -11,76 +11,72 @@ input_2 = input("Second Vector?\n")
 #Split answers into a list and see if it's complex or not
 vector_1 = input_1.split(" ")
 num_1 = len(vector_1)
-if num_1 == 4: # 95 S 56 E
-    complex1 = True
 if (num_1 % 2 != 0) or num_1 > 4:
     print("Question is invalid")
     exit()
 vector_2 = input_2.split(" ")
 num_2 = len(vector_2)
-if num_2 == 4:
-    complex1 = True
 if (num_2 % 2 != 0) or num_2 > 4:
     print("Question is invalid")
     exit()
 
-vector_1[0] = int(vector_1[0])
-if complex1 == True:
-    vector_1[2] = int(vector_1[2])
-vector_2[0] = int(vector_2[0])
-if complex2 == True:
-    vector_2[2] = int(vector_2[2])
+vector_1[0] = float(vector_1[0])
+vector_2[0] = float(vector_2[0])
 
 #Convert all North or South headed vectors into West or East headed vectors:
-if complex1 == True:
-    if vector_1[1] == "N" or "S":
-        vector_1[2] = 90 - vector_1[2]
+if vector_1[1] == "N" or "n" or "S" or "s":
+    if num_1 == 2:
+        vector_1.append(float(90))
+        vector_1.append(vector_1[1])
+        vector_1[1] = "E"
+    else:
+        vector_1[2] = 90 - float(vector_1[2])
         main_dir = vector_1[1]
         vector_1[1] = vector_1[3]
         vector_1[3] = main_dir
-        if vector_1[1] == "E" or "e":
-            vecxval1 = 1
-        else:
-            vecxval1 = -1
-        if vector_1[3] == "N" or "n":
-            vecyval1 = 1
-        else:
-            vecyval1 = -1
+    if vector_1[1] == "E" or "e":
+        vecxval1 = 1
+    else:
+        vecxval1 = -1
+    if vector_1[3] == "N" or "n":
+        vecyval1 = 1
+    else:
+        vecyval1 = -1
 
-
-if complex2 == True:
-    if vector_2[1] == "N" or "S":
-        vector_2[2] = 90 - vector_2[2]
-        main_dir_2 = vector_2[1]
+if vector_2[1] == "N" or "n" or "S" or "s":
+    if num_2 == 2:
+        vector_2.append(float(90))
+        vector_2.append(vector_2[1])
+        vector_2[1] = "E"
+    else:
+        vector_2[2] = 90 - float(vector_2[2])
+        main_dir = vector_2[1]
         vector_2[1] = vector_2[3]
-        vector_2[3] = main_dir_2
-        if vector_2[1] == "E" or "e":
-            vecxval2 = 1
-        else:
-            vecxval2 = -1
-        if vector_2[3] == "N" or "n":
-            vecyval2 = 1
-        else:
-            vecyval2 = -1
+        vector_2[3] = main_dir
+    if vector_2[1] == "E" or "e":
+        vecxval2 = 1
+    else:
+        vecxval2 = -1
+    if vector_2[3] == "N" or "n":
+        vecyval2 = 1
+    else:
+        vecyval2 = -1
 
 #Convert inputted numbers into Intergers
-vector_1[0] = int(vector_1[0])
-if complex1 == True:
-    vector_1[2] = int(vector_1[2])
 
-vector_2[0] = int(vector_2[0])
-if complex2 == True:
-    vector_2[2] = int(vector_2[2])
+vector_1[2] = float(vector_1[2])
+vector_2[2] = float(vector_2[2])
 
 #Solve direction for complex questions:
 #List composition: [magnitude, heading direction, angle, direction of angle, x-value of vector, y-value]
-if complex1 == True:
-    vector_1.append(vector_1[0] * math.sin(vector_1[2])*vecxval1)
-    vector_1.append(vector_1[0] * math.cos(vector_1[2])*vecyval1)
-if complex2 == True:
-    vector_2.append(vector_2[0] * math.sin(vector_2[2])*vecxval2)
-    vector_2.append(vector_2[0] * math.cos(vector_2[2])*vecyval2)
 
+vector_1.append(vector_1[0] * math.sin(vector_1[2])*vecxval1)
+vector_1.append(vector_1[0] * math.cos(vector_1[2])*vecyval1)
+vector_2.append(vector_2[0] * math.sin(vector_2[2])*vecxval2)
+vector_2.append(vector_2[0] * math.cos(vector_2[2])*vecyval2)
+
+print(vecxval1)
+exit()
 #find d_result only if the movements are perpendicular
 
 while run == True:
@@ -92,8 +88,6 @@ while run == True:
         input_2 = input("What is it?")
         vector_2 = input_2.split(" ")
         num_2 = len(vector_2)
-        if num_2 == 4:
-            complex2 = True
         if (num_2 % 2 != 0) or num_2 > 4:
             print("Question is invalid")
             exit()
